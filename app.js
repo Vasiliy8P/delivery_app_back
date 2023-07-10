@@ -1,9 +1,11 @@
+const dotenv = require("dotenv");
+
 const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
 const shopsRouter = require('./routes/api/shops')
-
+dotenv.config();
 const app = express()
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
@@ -22,4 +24,4 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message })
 })
 
-module.exports = app
+module.exports = app;
