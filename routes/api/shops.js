@@ -1,25 +1,12 @@
 const express = require('express')
+const ctrl = require('../../controllers/shops');
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get('/', ctrl.getAll);
 
-router.get('/:shopId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post('/', ctrl.addShop);
 
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.delete('/:shopId', ctrl.deleteShop);
 
-router.delete('/:shopId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.put('/:shopId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-module.exports = router
+module.exports = router;

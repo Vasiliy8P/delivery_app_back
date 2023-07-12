@@ -1,20 +1,22 @@
 const dotenv = require("dotenv");
 
-const express = require('express')
-const logger = require('morgan')
-const cors = require('cors')
+const express = require('express');
+const logger = require('morgan');
+const cors = require('cors');
 
-const shopsRouter = require('./routes/api/shops')
+const shopsRouter = require('./routes/api/shops');
 dotenv.config();
-const app = express()
+const app = express();
 
-const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
+const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
-app.use(logger(formatsLogger))
-app.use(cors())
-app.use(express.json())
+app.use(logger(formatsLogger));
+app.use(cors());
+app.use(express.json());
 
-app.use('/api/shops', shopsRouter)
+app.use('/api/shops', shopsRouter);
+// app.use('/api/shops/:shopsId/goods', goodsRouter);
+// app.use('/api/orders', ordersRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' })
