@@ -5,6 +5,8 @@ const logger = require('morgan');
 const cors = require('cors');
 
 const shopsRouter = require('./routes/api/shops');
+const goodsRouter = require('./routes/api/goods');
+
 dotenv.config();
 const app = express();
 
@@ -15,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/shops', shopsRouter);
-// app.use('/api/shops/:shopsId/goods', goodsRouter);
+app.use('/api/shops', goodsRouter);
 // app.use('/api/orders', ordersRouter);
 
 app.use((req, res) => {
